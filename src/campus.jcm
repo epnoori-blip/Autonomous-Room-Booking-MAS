@@ -1,0 +1,24 @@
+mas campus {
+
+    agent user1 : user.asl {
+        beliefs: need_room(60, "10:00", projector)
+    }
+
+    agent scheduler : scheduler.asl
+
+    agent roomR101 : room.asl {
+        beliefs: room_id(r101), 
+                 capacity(40), 
+                 has_equipment(whiteboard), 
+                 status(available)
+    }
+
+    agent roomR103 : room.asl {
+        beliefs: room_id(r103), 
+                 capacity(80), 
+                 has_equipment(projector), 
+                 status(available)
+    }
+
+    asl-path: "src/campus/agents"
+}

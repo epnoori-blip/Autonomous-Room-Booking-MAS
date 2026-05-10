@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://raw.githubusercontent.com/jacamo-lang/mvn-repo/master' }
+    maven { url 'https://repo.gradle.org/gradle/libs-releases' }
+}
+
+dependencies {
+    implementation 'org.jacamo:jacamo:1.2'
+}
+
+sourceSets {
+    main {
+        java { srcDirs = ['src'] }
+        resources { srcDirs = ['src'] }
+    }
+}
+
+task runMas(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'jacamo.infra.JaCaMoLauncher'
+    args = ['src/campus.jcm']
+}
